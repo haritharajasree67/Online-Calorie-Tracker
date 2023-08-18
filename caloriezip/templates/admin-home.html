@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<link rel="stylesheet" href="{% static 'user-home.css' %}">
+<div id="header">
+    <a href="" id="logo"><span>&#127850</span> Calorie Tracker</a>
+    <ul id="menu">
+        <a href="/logout">Logout</a>
+    </ul>
+</div>
+<div class="container">
+  <div class="sidebar">
+    <div class="item active"onclick="location.href='/home'">Home</div>
+  </div>
+  <div class="content">
+    <div class="add-item">
+      <form action="item" method="post">
+          {% csrf_token %}
+          <input class="add-item-input" type="text" name="item_name" placeholder="Item name">
+          <input class="add-item-input" type="text" name="calorie" placeholder="Calorie">
+          <select name="category">
+            <option value="0">Vegetables</option>
+            <option value="1">Fruits</option>
+            <option value="2">Grains</option>
+            <option value="3">Meat And Poultry</option>
+            <option value="4">Fish And Seafood</option>
+            <option value="5">Dairy Foods</option>
+            <option value="6">Beans</option>
+            <option value="7">Nuts</option>
+          </select>
+          
+          <input class="add-item-input submit-btn" type="submit">
+      </form>
+      <div>
+        {% if messages %}
+          {% for message in messages %}
+          <p {% if message.tags %} class="error-item-submission"{% endif %}>{{ message }}</p>
+          {% endfor %}
+        {% else %}
+          <p class="error-item-submission dummy">dummy</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="detail row">
+        <div class="column">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                  <th>Item</th>
+                  <th>Calorie</th>
+                  <th>
+                    <form>
+                    <select name="category" onchange="this.form.submit()">
+                      <option value="0">Category</option>
+                      <option value="-1">All</option>
+                      <option value="0">Vegetables</option>
+                      <option value="1">Fruits</option>
+                      <option value="2">Grains</option>
+                      <option value="3">Meat And Poultry</option>
+                      <option value="4">Fish And Seafood</option>
+                      <option value="5">Dairy Foods</option>
+                      <option value="6">Beans</option>
+                      <option value="7">Nuts</option>
+                    </select>
+                  </form>
+                  
+                  </th>
+                  <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in object_list %}
+              <tr >
+                <td class="col-1">{{object.name}}</td>
+                <td class="col-2">{{object.calories}}</td>
+                <td class="col-3">{{object.get_category_display }}</td>
+                <td class="col-4"><form action="item/{{object.id}}/" method="POST"> {% csrf_token %} <input type="submit" value="Remove Item" class="remove-btn" /> </form></td>
+              </tr>
+              {% endfor %}
+              {% if object_list %}
+              {% else %}
+                <tr>
+                  <td class="col-1"></td>
+                  <td class="col-2"></td>
+                  <td class="col-3"></td>
+                  <td class="col-4">No Item Found</td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+        <div class="column"></div>
+      </div>
+  </div>
+</div>
+<div id="footer">
+
+</div>
+{% endblock %}

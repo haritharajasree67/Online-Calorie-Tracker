@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<div id="header">
+    <a href="" id="logo"><span>&#127850</span> Calorie Tracker</a>
+    <ul id="menu">
+        <a href="/register">Sign Up</a>
+        <a href="/login">Sign In</a>
+    </ul>
+</div>
+<div id="body">
+    <div class="container">
+      <div class="typed-out">Want to track your calorie intake?</div>
+    </div>
+</div>
+<div id="footer">
+
+</div>
+{% endblock %}

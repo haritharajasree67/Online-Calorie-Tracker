@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<link rel="stylesheet" href="{% static 'user-home.css' %}">
+<div id="header">
+    <a href="/" id="logo"><span>&#127850</span> Calorie Tracker</a>
+    <ul id="menu">
+        <a href="/logout">Logout</a>
+    </ul>
+</div>
+<div class="container">
+  <div class="sidebar">
+    <div class="item"onclick="location.href='/home'">Home</div>
+    <div class="item active" onclick="location.href='/bmi-calculator'">BMR Calculator</div>
+    <div class="item" onclick="location.href='/history'">Calorie History</div>
+    <div class="item" onclick="location.href='/help'">Help</div>
+  </div>
+  <div class="content">
+    <div class="add-item bmi-calulator">
+      <div>
+        <form method="post">
+          {% csrf_token %}
+          <input type="radio" name="gender" value="0" {% if gender%}{% else %}checked{% endif %}> Men
+          <input type="radio" name="gender" value="1" {% if gender%}checked{% endif %}> Female
+          <div>
+            <input class="add-item-input bmi-calulator-input" type="text" name="age" placeholder="Age" value="{% if age %}{{age}}{% endif %}">
+          </div>
+          <div>
+            <input class="add-item-input bmi-calulator-input" type="text" name="weight" placeholder="Weight in kg" value="{% if weight %}{{weight}}{% endif %}">
+          </div>
+          <div>
+            <input class="add-item-input bmi-calulator-input" type="text" name="height" placeholder="Height in cm" value="{% if height %}{{height}}{% endif %}">
+          </div>
+          <div>
+            <input class="add-item-input bmi-calulator-input" type="submit" value="Calculate"/>
+          </div>
+        </form>
+        <div>
+          {% if messages %}
+            {% for message in messages %}
+            <p {% if message.tags %} class="error-item-submission"{% endif %}>{{ message }}</p>
+            {% endfor %}
+          {% else %}
+            <p class="error-item-submission dummy">dummy</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="bmi-info">
+        <div class="result">
+          {% if result %}
+          <p>Result:{{result}} Calories/day you need to gain or loose</p>
+          {% else %}
+          <p class="hide-stmt">sdfsd</p>
+          {% endif %}
+        <!-- </div>
+        <div class="bmi-info-detail">
+          <p><b>BMR Categories:</b></p>
+          <p>Underweight<b> :</b> =&lt 18.5</p>
+          <p>Normal weight<b> :</b> 18.5 to 24.9</p>
+          <p>Overweight<b> :</b> 25 to 29.9</p>
+          <p>Obesity<b> :</b> BMR+ of 30 or greater</p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<div id="footer">
+
+</div>
+{% endblock %}
