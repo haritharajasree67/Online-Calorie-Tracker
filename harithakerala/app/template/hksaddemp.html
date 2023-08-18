@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+<head>
+<title>Auditions Registration Form Widget Flat Responsive Widget Template :: w3layouts</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Auditions Registration Form Widget Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<!-- //custom-theme -->
+<link href="{% static 'css1/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{% static 'js1/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<!-- font-awesome-icons -->
+<!-- //font-awesome-icons -->
+<link href="{% static 'fonts.googleapis.com/css?family=Anton&amp;subset=latin-ext,vietnamese' %}" rel="stylesheet">
+</head>
+<body>
+<!-- banner -->
+	<div class="center-container">
+	<div class="banner-dott">
+		<div class="main">
+			<h1 class="w3layouts_head">ADD HARITHAKARMASENA EMPLOYEE</h1>
+				<div class="w3layouts_main_grid">
+					<form action="/hksemp1/" method="post" class="w3_form_post" enctype="multipart/form-data" name="f1">
+						{% csrf_token %}
+						
+						<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Name </label>
+								<input type="text" name="name" placeholder="Name" required="">
+							</span>
+						</div>
+
+						<!-- <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Ward Number </label>
+								<select name="sward">
+									<option >Ward Number</option>
+
+                                    {% for ct in d1 %}
+									
+									<option value="{{ct.ward_id}}">{{ct.ward_number}}</option>
+
+									{% endfor %}
+								</select>
+								
+								<input type="text" name="district" placeholder="District" required=""> -->
+							<!-- </span>
+						</div>
+						 -->
+
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Address </label>
+								<input type="text" name="address" placeholder="Address" required="">
+							</span>
+						</div>
+
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Gender</label>
+								<select name="gender">
+									<option value="none" selected="" disabled="">Gender</option>
+									<option>Female</option>
+									<option>Male</option>
+								</select>
+							</span>
+						</div>
+
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Age</label>
+								<input type="text" name="age" placeholder="Age" required="">
+							</span>
+						</div>
+
+                        
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Phone Number </label>
+								<input type="text" name="phonenumber" placeholder="Phone Number" required="">
+							</span>
+						</div>
+
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Email</label>
+								<input type="text" name="email" placeholder="Email" required="">
+							</span>
+						</div>
+
+                        	<div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Ward Number </label>
+								<select name="ssward">
+									<option >Ward Number</option>
+
+                                    {% for ct in d1 %}
+									
+									<option value="{{ct.ward_id}}">{{ct.ward_number}}</option>
+
+									{% endfor %}
+								</select>
+								
+								<!-- <input type="text" name="district" placeholder="District" required=""> --> 
+							 </span>
+						</div>
+
+                        <div class="agileits_w3layouts_main_grid w3ls_main_grid">
+							<span class="agileinfo_grid">
+								<label>Appointment Date </label>
+								<div class="agileits_w3layouts_main_gridl">
+									<input class="date" id="datepicker" name="date" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+								</div>
+								
+									<div class="clear"> </div>
+							</span>
+						</div>
+
+                        <div class="w3_agileits_main_grid w3l_main_grid">
+							<span class="agileits_grid">
+								<label>Upload Photo</label>
+								<input type="file" name="sphoto" placeholder="Upload photo" required="">
+							</span>
+						</div>
+						
+
+					
+					<div class="w3_main_grid">
+						<div class="w3_main_grid_right">
+							<input type="submit" value="Submit">
+						</div>
+					</div>
+				</form>
+			</div>
+		<!-- Calendar -->
+			<link rel="stylesheet" href="{% static 'css1/jquery-ui.css' %}" />
+				<script src="{% static 'js1/jquery-ui.js' %}"></script>
+					<script>
+						$(function() {
+							$( "#datepicker" ).datepicker();
+						});
+					</script>
+		<!-- //Calendar -->
+			
+		</div>
+	</div>
+	</div>
+<!-- //footer -->
+</body>
+</html>
